@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'therestaurant.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'restaurantsystem',
+        'USER': 'postgres',
+        'PASSWORD': 'futureNewYorker.310',
+        'HOST': '127.0.0.1',
+        "PORT": '5432',
     }
 }
 
@@ -110,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC+5'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 

@@ -169,3 +169,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+/restaurantsystem/migrations/0001_initial.py
