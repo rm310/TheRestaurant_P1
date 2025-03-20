@@ -4,15 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="075b7746-1078-4b81-9c61-5dcc7c102def" name="Changes" comment="" />
+    <list default="true" id="075b7746-1078-4b81-9c61-5dcc7c102def" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/TheRestaurant_P1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restaurantsystem/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/restaurantsystem/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/restaurantsystem/bookingsystem.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/restaurantsystem/contactinfos.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/restaurantsystem/dishesmenu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/restaurantsystem/orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurantsystem/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantsystem/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurantsystem/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantsystem/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurantsystem/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantsystem/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurantsystem/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantsystem/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurantsystem/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurantsystem/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/therestaurant/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/therestaurant/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/therestaurant/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/therestaurant/urls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -44,14 +68,17 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.templateLanguages.PyTemplateLanguageModulesConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -110,7 +137,11 @@
       <workItem from="1741810488628" duration="11670000" />
       <workItem from="1741827662102" duration="236000" />
       <workItem from="1741827919535" duration="2958000" />
-      <workItem from="1741834220909" duration="699000" />
+      <workItem from="1741834220909" duration="1169000" />
+      <workItem from="1741938133964" duration="21477000" />
+      <workItem from="1742205740148" duration="25398000" />
+      <workItem from="1742310859217" duration="7000" />
+      <workItem from="1742473584950" duration="4186000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,4 @@
 from decimal import Decimal
-
 from django.db import models
 
 
@@ -21,6 +20,7 @@ class DishesMenu(models.Model):
                                      choices=Specifications.choices,
                                      default=Specifications.ORDINARY)
 
+
     def __str__(self):
         return self.dish_name
 
@@ -31,6 +31,9 @@ class ContactInfo(models.Model):
     email = models.CharField(max_length=50, unique=True)
     social_account1 = models.CharField(max_length=50, unique=True)
     social_account2 = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.phone_number1
 
 class BookingPlace(models.Model):
 
@@ -49,6 +52,8 @@ class BookingPlace(models.Model):
                                       choices=Specifications.choices,
                                       default=Specifications.NOSPECIFICATIONS)
 
+    def __str__(self):
+        return self.customers_name
 
 class Orders(models.Model):
     orderers_name = models.CharField(max_length=30)

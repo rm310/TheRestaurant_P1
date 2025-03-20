@@ -1,0 +1,40 @@
+{% extends 'restaurantsystem/base.html' %}
+
+{%block title%} Order Details {% endblock %}
+
+{%block content%}
+  <ul>
+    {% for order in orderdetails %}
+    <li>
+      <h3>{{order.orderers_name}}</h3>
+      <p><strong>Phone Number - </strong>{{order.orderers_phone}}</p>
+      <p><strong>Address - </strong>{{order.delivery_address}}</p>
+      <p><strong>Date Time - </strong>{{order.order_datetime}}</p>
+      <h3>Dishes: </h3>
+      <ul>
+        {% for item in order.orderdetails_set.all%}
+        <li>
+          <strong>{{item.dish.dish_name}}</strong>
+          - {{item.quantity}}:
+          <strong>{{item.total_price}}</strong>
+        </li>
+        {% endfor %}
+      </ul>
+      <p><strong>Total Price - </strong>{{order.total_price}}</p>
+    </li>
+  {% endfor %}
+  </ul>
+  <div>
+     {% if orderdetails.has_previous %}
+          <a href="?q={{ query }}&page=1">Birinchi</a>
+          <a href="?q={{ query }}&page={{ orderdetails.previous_page_number}}">Oldingi</a>
+     {% endif %}
+
+     Sahifa {{ orderdetails.number }} / {{ orderdetails.paginator.num_pages }}
+
+     {% if orderdetails.has_next %}
+          <a href="?q={{ query }}&page={{ corderdetails.next_page_number}}">Keyingi</a>
+          <a href="?q={{ query }}&page={{ orderdetails.paginator.num_pages}}">Oxirgi</a>
+     {% endif %}
+   </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'restaurantsystem/base.html' %}
+
+{%block title%} Booking PLace {% endblock %}
+
+{%block content%}
+  <ul>
+    {% for booking in bookings %}
+    <li>
+      <h3>{{booking.date_time}}</h3>
+      <p><strong>Bookers Name - </strong>{{booking.customers_name}}</p>
+      <p><strong>Contact Number - </strong>{{booking.phone_number}}</p>
+      <p><strong>Place for - </strong>{{booking.place_for}}</p>
+      <p><strong>Specification - </strong>{{booking.specifications}}</p>
+    </li>
+  {% endfor %}
+  </ul>
+   <div>
+     {% if bookings.has_previous %}
+          <a href="?q={{ query }}&page=1">Birinchi</a>
+          <a href="?q={{ query }}&page={{ bookings.previous_page_number}}">Oldingi</a>
+     {% endif %}
+
+     Sahifa {{ bookings.number }} / {{ bookings.paginator.num_pages }}
+
+     {% if bookings.has_next %}
+          <a href="?q={{ query }}&page={{ bookings.next_page_number}}">Keyingi</a>
+          <a href="?q={{ query }}&page={{ bookings.paginator.num_pages}}">Oxirgi</a>
+     {% endif %}
+   </div>
+
+{% endblock %}

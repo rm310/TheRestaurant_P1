@@ -1,0 +1,40 @@
+{% extends 'restaurantsystem/base.html' %}
+
+{% block title %} Dishes Menu {% endblock %}
+
+{% block content %}
+
+<form method="get">
+    <input type = "text" name="q" value="{{query}}" placeholder="Search a dish">
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+  {% for dish in dishes %}
+  <li>
+      <h3>{{dish.dish_name}}</h3>
+      <p><strong>Price:</strong>{{dish.price}}</p>
+      <p><strong>Description - </strong>{{ dish.description }}</p>
+      <p><strong>Portion - </strong>{{ dish.portion }}</p>
+      <p><strong>Specification - </strong>{{ dish.specification }}</p>
+  </li>
+  {% empty %}
+    <li>No dishes found.</li>
+  {% endfor %}
+</ul>
+
+   <div>
+     {% if dishes.has_previous %}
+          <a href="?q={{ query }}&page=1">Birinchi</a>
+          <a href="?q={{ query }}&page={{ dishes.previous_page_number}}">Oldingi</a>
+     {% endif %}
+
+     Sahifa {{ dishes.number }} / {{ dishes.paginator.num_pages }}
+
+     {% if dishes.has_next %}
+          <a href="?q={{ query }}&page={{ dishes.next_page_number}}">Keyingi</a>
+          <a href="?q={{ query }}&page={{ dishes.paginator.num_pages}}">Oxirgi</a>
+     {% endif %}
+   </div>
+{% endblock %}
+
