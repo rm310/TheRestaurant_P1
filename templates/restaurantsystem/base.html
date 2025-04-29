@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{%block title%} {% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
 </head>
 <body>
   <header>
@@ -11,8 +14,9 @@
 
   <main>
     {%block content%} {% endblock %}
+    {% bootstrap_javascript %}
   </main>
 
-  <a href = " http://127.0.0.1:8000/">back</a>
+
 </body>
 </html>

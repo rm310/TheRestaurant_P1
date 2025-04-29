@@ -2,12 +2,26 @@
 
 {% block title %} Dishes Menu {% endblock %}
 
+
 {% block content %}
 
 <form method="get">
     <input type = "text" name="q" value="{{query}}" placeholder="Search a dish">
     <button type="submit">Search</button>
 </form>
+
+<a href="?create=1">Create Dish</a>
+
+{% if show_form %}
+<form method="post">
+    {% csrf_token %}
+    {{ create_form.as_p}}
+    <input type="hidden" name="action" value="create">
+    <button type="submit">Add Dish</button>
+    <a href="{% url 'dishes_menu' %}">Cancel</a>
+</form>
+{% endif %}
+
 
 <ul>
   {% for dish in dishes %}
@@ -17,6 +31,25 @@
       <p><strong>Description - </strong>{{ dish.description }}</p>
       <p><strong>Portion - </strong>{{ dish.portion }}</p>
       <p><strong>Specification - </strong>{{ dish.specification }}</p>
+      {% if edit_dish_id == dish.id%}
+      <form method="post">
+          {% csrf_token%}
+          {{ edit_form.as_p}}
+          <input type="hidden" name="action" value="edit">
+          <input type="hidden" name="dish_id" value="{{dish.id}}">
+          <button type="submit">Save</button>
+          <a href="{% url 'dishes_menu'%}">Cancel</a>
+      </form>
+      {% else %}
+      <a href="?edit={{dish.id}}&page={{dishes.number}}&q={{quert}}">Edit</a>
+      <form method="post" style="display: inline;">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="dish_id" value="{{dish.id}}">
+          <button type="submit" onclick="return confirm('Delete this dish?')">Delete</button>
+      </form>
+      {% endif %}
+
   </li>
   {% empty %}
     <li>No dishes found.</li>
@@ -36,5 +69,6 @@
           <a href="?q={{ query }}&page={{ dishes.paginator.num_pages}}">Oxirgi</a>
      {% endif %}
    </div>
+    <a href = " http://127.0.0.1:8000/">back</a>
 {% endblock %}
 

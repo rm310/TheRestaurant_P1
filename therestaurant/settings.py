@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     #local:
 
-    'restaurantsystem'
+    'restaurantsystem',
+    'bootstrap5',
 
 ]
 

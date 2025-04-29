@@ -1,0 +1,19 @@
+{% extends 'restaurantsystem/base.html' %}
+
+{% block title %} Restaurant System! {% endblock %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<div class="container">
+  <ul class="nav bg-info"></ul>
+  {% block content %}
+      <h1 class="mt-4">Welcome to the Restaurant System!</h1>
+      <p class="lead">Choose an option below:</p>
+      <div class="list-group">
+        <a href="{% url 'dishes_menu' %}" class="list-group-item list-group-item-action">Menu</a>
+      </div>
+  {% endblock %}
+</div>
+
