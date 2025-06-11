@@ -1,0 +1,34 @@
+{% extends 'restaurantsystem/base.html' %}
+
+{% load bootstrap5 %}
+
+{% block title %}Restaurant System!{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+  {% if user.is_authenticated %}
+    <p>Hello, {{ user.email }}</p>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button class="btn btn-danger">Logout</button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn btn-success">Login</a>
+  {% endif %}
+
+  <hr>
+
+  <h1>Welcome to the Restaurant System!</h1>
+  <p class="lead">Choose an option below:</p>
+
+  <div class="list-group">
+    <a href="{% url 'dishes_menu' %}" class="list-group-item list-group-item-action">Menu</a>
+    <a href="{% url 'booking_place' %}" class="list-group-item list-group-item-action">Booking</a>
+    <a href="{% url 'contact_informations' %}" class="list-group-item list-group-item-action">Contact Info</a>
+    <a href="{% url 'order_details' %}" class="list-group-item list-group-item-action">Ordering</a>
+  </div>
+</div>
+
+{% endblock %}
+

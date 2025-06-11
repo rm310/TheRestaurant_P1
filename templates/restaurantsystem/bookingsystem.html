@@ -1,0 +1,55 @@
+{% extends 'restaurantsystem/base.html' %}
+
+{%block title%} Booking PLace {% endblock %}
+
+{%block content%}
+
+<form method="get">
+    <input type = "text" name="q" value="{{query}}" placeholder="Search by name">
+    <button type="submit">Search</button>
+</form>
+
+  <ul>
+    {% for booking in bookings %}
+    <li>
+      <h3>{{booking.date_time}}</h3>
+      <p><strong>Bookers Name - </strong>{{booking.customers_name}}</p>
+      <p><strong>Contact Number - </strong>{{booking.phone_number}}</p>
+      <p><strong>Place for - </strong>{{booking.place_for}}</p>
+      <p><strong>Specification - </strong>{{booking.specifications}}</p>
+      {% if edit_booking_id == booking.id%}
+      <form method="post">
+          {% csrf_token%}
+          {{ edit_form.as_p}}
+          <input type="hidden" name="action" value="edit">
+          <input type="hidden" name="booking_id" value="{{booking.id}}">
+          <button type="submit">Save</button>
+          <a href="{% url 'booking_place'%}">Cancel</a>
+      </form>
+      {% else %}
+      <a href="?edit={{booking.id}}&page={{bookings.number}}&q={{quert}}">Edit</a>
+      <form method="post" style="display: inline;">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="booking_id" value="{{booking.id}}">
+          <button type="submit" onclick="return confirm('Delete this booking?')">Delete</button>
+      </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+   <div>
+     {% if bookings.has_previous %}
+          <a href="?q={{ query }}&page=1">Birinchi</a>
+          <a href="?q={{ query }}&page={{ bookings.previous_page_number}}">Oldingi</a>
+     {% endif %}
+
+     Sahifa {{ bookings.number }} / {{ bookings.paginator.num_pages }}
+
+     {% if bookings.has_next %}
+          <a href="?q={{ query }}&page={{ bookings.next_page_number}}">Keyingi</a>
+          <a href="?q={{ query }}&page={{ bookings.paginator.num_pages}}">Oxirgi</a>
+     {% endif %}
+   </div>
+    <a href = " http://127.0.0.1:8000/">back</a>
+{% endblock %}
