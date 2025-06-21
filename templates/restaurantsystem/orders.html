@@ -1,0 +1,84 @@
+{%extends 'restaurantsystem/base.html' %}
+
+{%block title%} Order Details {% endblock %}
+
+{%block content%}
+<form method="get">
+    <input type = "text" name="q" value="{{query}}" placeholder="Search an order">
+    <button type="submit">Search</button>
+</form>
+
+<a href="?create=1">Add new Order</a>
+
+{% if show_form %}
+<form method="post">
+    {% csrf_token %}
+    {{ create_form.as_p}}
+
+    {{ create_formset.management_form }}
+    {% for form in create_formset %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
+            {{ form.as_p }}
+        </div>
+    {% endfor %}
+
+    <input type="hidden" name="action" value="create">
+    <button type="submit">Make Order</button>
+    <a href="{% url 'order_details' %}">Cancel</a>
+</form>
+{% endif %}
+
+  <ul>
+    {% for order in orderdetails %}
+    <li>
+      <h3>{{order.orderers_name}}</h3>
+      <p><strong>Phone Number - </strong>{{order.orderers_phone}}</p>
+      <p><strong>Address - </strong>{{order.delivery_address}}</p>
+      <p><strong>Date Time - </strong>{{order.order_datetime}}</p>
+      <h3>Dishes: </h3>
+      <ul>
+        {% for item in order.orderdetails_set.all%}
+        <li>
+          <strong>{{item.dish.dish_name}}</strong>
+          - {{item.quantity}}:
+          <strong>{{item.total_price}}</strong>
+        </li>
+        {% endfor %}
+      </ul>
+      <p><strong>Total Price - </strong>{{order.total_price}}</p>
+      {% if edit_order_id == order.id%}
+      <form method="post">
+          {% csrf_token%}
+          {{ edit_form.as_p}}
+          <input type="hidden" name="action" value="edit">
+          <input type="hidden" name="dish_id" value="{{order.id}}">
+          <button type="submit">Save</button>
+          <a href="{% url 'order_details'%}">Cancel</a>
+      </form>
+      {% else %}
+      <a href="?edit={{order.id}}&page={{orders.number}}&q={{query}}">Edit</a>
+      <form method="post" style="display: inline;">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="order_id" value="{{order.id}}">
+          <button type="submit" onclick="return confirm('Delete this order?')">Delete</button>
+      </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+  <div>
+     {% if orderdetails.has_previous %}
+          <a href="?q={{ query }}&page=1">Birinchi</a>
+          <a href="?q={{ query }}&page={{ orderdetails.previous_page_number}}">Oldingi</a>
+     {% endif %}
+
+     Sahifa {{ orderdetails.number }} / {{ orderdetails.paginator.num_pages }}
+
+     {% if orderdetails.has_next %}
+          <a href="?q={{ query }}&page={{ corderdetails.next_page_number}}">Keyingi</a>
+          <a href="?q={{ query }}&page={{ orderdetails.paginator.num_pages}}">Oxirgi</a>
+     {% endif %}
+   </div>
+    <a href = " http://127.0.0.1:8000/">back</a>
+{% endblock %}

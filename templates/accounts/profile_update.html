@@ -1,0 +1,20 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans "Update Profile" %}</title>
+</head>
+<body>
+    <h1>{% trans "Update Profile" %}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% trans "Save Changes" %}</button>
+    </form>
+    <a href="{% url 'profile' %}">{% trans "Back to Profile" %}</a>
+</body>
+</html>
+
+
+

@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% trans "Restaurant System" %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% bootstrap_css %}
+</head>
+<body>
+    <header class="p-3 bg-light border-bottom">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1>{% trans "Restaurant System" %}</h1>
+
+            <!-- 🌐 Language Switcher -->
+            <form method="post" action="{% url 'set_language' %}">
+                {% csrf_token %}
+                <select name="language" class="form-select" onchange="this.form.submit()">
+                    <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>{% trans "English" %}</option>
+                    <option value="ru" {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}>{% trans "Russian" %}</option>
+                    <option value="uz" {% if LANGUAGE_CODE == 'uz' %}selected{% endif %}>{% trans "Uzbek" %}</option>
+                </select>
+                <input type="hidden" name="next" value="{{ request.path }}">
+            </form>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% bootstrap_javascript %}
+</body>
+</html>
+

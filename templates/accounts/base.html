@@ -1,0 +1,18 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% trans "restaurantSystem" %}{% endblock %}</title>
+</head>
+<body>
+  {% if user.is_authenticated %}
+    <p>{% trans "Hello," %} {{ user.email }} | <a href="{% url 'logout' %}">{% trans "Logout" %}</a></p>
+  {% else %}
+    <a href="{% url 'login' %}">{% trans "Login" %}</a> |
+    <a href="{% url 'register' %}">{% trans "Register" %}</a>
+  {% endif %}
+
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>

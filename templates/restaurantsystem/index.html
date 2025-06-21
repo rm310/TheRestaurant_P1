@@ -1,0 +1,34 @@
+{% extends 'restaurantsystem/base.html' %}
+{% load bootstrap5 %}
+{% load i18n %}
+
+{% block title %}{% trans "Restaurant System!" %}{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+  {% if user.is_authenticated %}
+    <p>{% trans "Hello," %} {{ user.email }}</p>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button class="btn btn-danger">{% trans "Logout" %}</button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn btn-success">{% trans "Login" %}</a>
+  {% endif %}
+
+  <hr>
+
+  <h1>{% trans "Welcome to the Restaurant System!" %}</h1>
+  <p class="lead">{% trans "Choose an option below:" %}</p>
+
+  <div class="list-group">
+    <a href="{% url 'dishes_menu' %}" class="list-group-item list-group-item-action">{% trans "Menu" %}</a>
+    <a href="{% url 'booking_place' %}" class="list-group-item list-group-item-action">{% trans "Booking" %}</a>
+    <a href="{% url 'contact_informations' %}" class="list-group-item list-group-item-action">{% trans "Contact Info" %}</a>
+    <a href="{% url 'order_details' %}" class="list-group-item list-group-item-action">{% trans "Ordering" %}</a>
+  </div>
+</div>
+
+{% endblock %}
+

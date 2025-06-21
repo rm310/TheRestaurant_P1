@@ -1,0 +1,49 @@
+{% extends 'restaurantsystem/base.html' %}
+
+{%block title%} Contact Information {% endblock %}
+
+{%block content%}
+  <ul>
+    {% for cinfo in cinfos %}
+    <li>
+      <h3>{{cinfo.phone_number1}}</h3>
+      <p><strong>Extra Phone Number - </strong>{{cinfo.phone_number2}}</p>
+      <p><strong>Email - </strong>{{cinfo.email}}</p>
+      <p><strong>Social Account 1 - </strong>{{cinfo.social_account1}}</p>
+      <p><strong>Social Account 2 - </strong>{{cinfo.social_account2}}</p>
+      {% if edit_cinfo_id == cinfo.id%}
+      <form method="post">
+          {% csrf_token%}
+          {{ edit_form.as_p}}
+          <input type="hidden" name="action" value="edit">
+          <input type="hidden" name="dish_id" value="{{dish.id}}">
+          <button type="submit">Save</button>
+          <a href="{% url 'contact_informations'%}">Cancel</a>
+      </form>
+      {% else %}
+      <a href="?edit={{cinfo.id}}&page={{cinfos.number}}&q={{query}}">Edit</a>
+      <form method="post" style="display: inline;">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="delete">
+          <input type="hidden" name="cinfo_id" value="{{cinfo.id}}">
+          <button type="submit" onclick="return confirm('Delete this contact information?')">Delete</button>
+      </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+  <div>
+     {% if cinfos.has_previous %}
+          <a href="?q={{ query }}&page=1">Birinchi</a>
+          <a href="?q={{ query }}&page={{ cinfos.previous_page_number}}">Oldingi</a>
+     {% endif %}
+
+     Sahifa {{ cinfos.number }} / {{ cinfos.paginator.num_pages }}
+
+     {% if cinfos.has_next %}
+          <a href="?q={{ query }}&page={{ cinfos.next_page_number}}">Keyingi</a>
+          <a href="?q={{ query }}&page={{ cinfos.paginator.num_pages}}">Oxirgi</a>
+     {% endif %}
+   </div>
+   <a href = " http://127.0.0.1:8000/">back</a>
+{% endblock %}
